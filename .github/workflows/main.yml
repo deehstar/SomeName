@@ -3,7 +3,7 @@ name: Main workflow
 on: push
 
 env:
-  docker_username: morteneandersen
+  docker_username: deehstar
   docker_password: ${{ secrets.GITHUB_TOKEN }}
   GIT_COMMIT: ${{ github.sha }}
   
@@ -61,7 +61,7 @@ jobs:
       - name: Download code
         uses: actions/download-artifact@v4
         with:
-          name: my-artifact
+          name: code
           path: .
       - name: Execute component test
         run: bash ci/component-test.sh
@@ -72,7 +72,7 @@ jobs:
       - name: Download code
         uses: actions/download-artifact@v4
         with:
-          name: my-artifact
+          name: code
           path: .
       - name: Execute performance test
         run: bash ci/performance-test.sh
